@@ -1,19 +1,29 @@
-﻿@model ASP_DotnetCoreMVC_CRUD.Models.Unit 
+﻿@model ASP_DotnetCoreMVC_CRUD.Models.Unit
 
 <h4 class="text text-primary mt-3 ">Creation d'un nouveau unit</h4>
 
 <form method="post" asp-controller="Unit" asp-action="Create">
     <div class="border p-3 mt-4">
         <div class="mb-3">
-            <label >Name</label>
+            <label>Name</label>
             <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label>Description</label>
             <input asp-for="Description" class="form-control" />
-        </div>   
-            <button type="submit" class="btn btn-success " style="width:150px"> Create</button>
-            <a type="submit" class="btn btn-secondary " asp-controller="Unit" asp-action="Index" style="width:150px"> Back to List</a>   
+            <span asp-validation-for="Description" class="text text-danger"></span>
+
+        </div>
+        <button type="submit" class="btn btn-success " style="width:150px"> Create</button>
+        <a type="submit" class="btn btn-secondary " asp-controller="Unit" asp-action="Index" style="width:150px"> Back to List</a>
     </div>
 </form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
