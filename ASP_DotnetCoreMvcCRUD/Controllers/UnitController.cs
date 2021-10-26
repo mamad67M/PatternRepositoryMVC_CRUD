@@ -42,7 +42,6 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
         }
 
         [HttpGet]
-        
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -65,6 +64,36 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             if (ModelState.IsValid)
             {
                 _db.units.Update(u);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(u);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            // var EditedObj = _db.units.Find(id);
+            var EditedObj = _db.units.SingleOrDefault(a => a.Id == id);
+            if (EditedObj == null)
+            {
+                return NotFound();
+            }
+            return View(EditedObj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int ? id)
+        {
+            var u = _db.units.SingleOrDefault(b => b.Id == id);
+            if (ModelState.IsValid)
+            {
+                _db.units.Remove(u);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
