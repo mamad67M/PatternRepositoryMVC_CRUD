@@ -21,5 +21,25 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             IEnumerable<Unit> list = _db.units;
             return View(list);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Unit u)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.units.Add(u);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            } 
+            return View(u);
+        }
+
     }
 }
