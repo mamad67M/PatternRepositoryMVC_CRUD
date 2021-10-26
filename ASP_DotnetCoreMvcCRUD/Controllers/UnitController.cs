@@ -41,6 +41,34 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             return View(u);
         }
 
-      
+        [HttpGet]
+        
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+           // var EditedObj = _db.units.Find(id);
+             var EditedObj = _db.units.SingleOrDefault(a => a.Id == id);
+            if (EditedObj == null)
+            {
+                return NotFound();
+            }
+            return View(EditedObj);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Unit u)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.units.Update(u);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(u);
+        }
     }
 }
