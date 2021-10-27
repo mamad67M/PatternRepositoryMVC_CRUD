@@ -99,5 +99,16 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             }
             return View(u);
         }
+
+        public IActionResult Details(int id)
+        {
+            var u = GetUnit(id);
+            return View(u);
+        }
+        public Unit GetUnit(int id)
+        {
+            Unit unit = _db.units.Find(id);
+            return unit;
+        }
     }
 }

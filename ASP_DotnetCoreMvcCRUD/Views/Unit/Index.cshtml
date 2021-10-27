@@ -5,7 +5,7 @@
 
     <div class="row p-4">
         <div class="col-6">
-            <h4 class="text text-primary ">liste des Units</h4>
+            <h4 class="text text-primary ">liste des Calista</h4>
         </div>
         <div class="col-6 text-right">
             <a asp-controller="Unit" asp-action="Create" class="btn btn-success"> <i class="bi bi-plus-circle-fill"></i> &nbsp; Add New Unit</a>
@@ -23,8 +23,8 @@
 <table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr class="text-center">
-            <th width="38%">Nom</th>
-            <th width="38%">Description</th>
+            <th width="30%">Nom</th>
+            <th width="30%">Description</th>
             <th>Actions</th>
         </tr>
 
@@ -39,9 +39,9 @@
                     <div class="w-100 btn-group" role="group">
 
                         <a asp-controller="Unit" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-1"> <i class="bi bi-pencil-square"></i></a>
-                       
-
+                        <a asp-controller="Unit" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-info mx-1"> <i class="bi bi-info-circle-fill"></i> </a>
                         <a asp-controller="Unit" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-1"> <i class="bi bi-trash-fill"></i></a>
+
 
                     </div>
                 </td>

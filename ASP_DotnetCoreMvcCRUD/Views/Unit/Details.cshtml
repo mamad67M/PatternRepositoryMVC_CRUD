@@ -1,26 +1,24 @@
 ﻿
 @model ASP_DotnetCoreMVC_CRUD.Models.Unit
 
-<h4 class="text text-danger mt-3 "> Etes vous sure de vouloir supprimer cet Objet ?</h4>
+<h4 class="text text-info mt-3 "> Les détails de l'objet </h4>
 
-<form method="post" asp-action="DeletePost">
-    <input asp-for="Id" hidden />
+<form method="post" asp-action="Details">
+    @*<input asp-for="Id" hidden />*@
     <div class="border p-3 mt-4">
         <div class="mb-3">
             <label>Name</label>
-            <input asp-for="Name" disabled class="form-control" />
-           
+            <input asp-for="Name"  class="form-control" />
+
         </div>
 
         <div class="mb-3">
             <label>Description</label>
             <input asp-for="Description" disabled class="form-control" />
-            
 
         </div>
-        <button type="submit" class="btn btn-danger " style="width:150px"> Delete</button>
+       
         <a type="submit" class="btn btn-secondary " asp-controller="Unit" asp-action="Index" style="width:150px"> Back to List</a>
-
     </div>
 </form>
 
