@@ -36,6 +36,7 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             {
                 _db.units.Add(u);
                 _db.SaveChanges();
+                TempData["success"] = "Unit créé avec succès";
                 return RedirectToAction("Index");
             } 
             return View(u);
@@ -65,6 +66,8 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             {
                 _db.units.Update(u);
                 _db.SaveChanges();
+                TempData["success"] = "Unit modifié avec succès";
+
                 return RedirectToAction("Index");
             }
             return View(u);
@@ -95,6 +98,8 @@ namespace ASP_DotnetCoreMVC_CRUD.Controllers
             {
                 _db.units.Remove(u);
                 _db.SaveChanges();
+                TempData["success"] = "Unit supprimé avec succès";
+
                 return RedirectToAction("Index");
             }
             return View(u);
